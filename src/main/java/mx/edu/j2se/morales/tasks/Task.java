@@ -34,17 +34,11 @@ public class Task {
         this.interval = interval;
     }
 
-    public String getTitle() {
-        return title;
-    }
+    public String getTitle() {return title;}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public void setTitle(String title) {this.title = title;}
 
-    public int getTime() {
-        return isRepeat() ? this.start : this.time ;
-    }
+    public int getTime() {return isRepeat() ? this.start : this.time ;}
 
     public void setTime(int time) {
         if (isRepeat()) {
@@ -69,25 +63,19 @@ public class Task {
 
     }
 
-    public int getStart() {
-        return isRepeat() ? this.start : 0;
-    }
+    public int getStart() {return isRepeat() ? this.start : getTime();}
 
     public void setStart(int start) {
         this.start = start;
     }
 
-    public int getEnd() {
-        return isRepeat() ? this.end : 0;
-    }
+    public int getEnd() {return isRepeat() ? this.end : getTime() ;}
 
     public void setEnd(int end) {
         this.end = end;
     }
 
-    public int getRepeatInterval() {
-        return isRepeat() ? this.interval : 0;
-    }
+    public int getRepeatInterval() {return isRepeat() ? this.interval : 0;}
 
     public void setInterval(int interval) {
         this.interval = interval;
