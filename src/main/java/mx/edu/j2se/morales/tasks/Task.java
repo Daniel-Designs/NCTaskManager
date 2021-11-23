@@ -1,9 +1,9 @@
 package mx.edu.j2se.morales.tasks;
-
 import com.sun.javafx.binding.StringFormatter;
+import com.sun.org.apache.xpath.internal.objects.XObject;
 
 /**
- * Clase Task
+ * Class Task
  * @author Daniel
  * @version 17.11.2021
  */
@@ -18,12 +18,16 @@ public class Task {
     private boolean active;
     private boolean repeat;
 
+    public Task() {
+        super();
+    }
 
     /**
      * Constructor non-repetitive Task
      * @param title must be a string
      * @param time must be a int
      */
+
     public Task(String title, int time) {
         this.title = title;
         this.time = time;
@@ -210,5 +214,13 @@ public class Task {
             }
     }
         return -1;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task that = (Task) o;
+        return title.equals(that.title);
     }
 }
