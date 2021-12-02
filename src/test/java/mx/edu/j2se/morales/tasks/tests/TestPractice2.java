@@ -94,7 +94,7 @@ public class TestPractice2 {
 
         System.out.println(arrayOfTask.getListOfTasks().length);
         arrayOfTask.toPrint();
-        ArrayTaskList incoming = arrayOfTask.arrayTaskList(4260,4280);
+        ArrayTaskList incoming = arrayOfTask.incoming(4260,4280);
         System.out.println("Tareas de la ultima funcion");
         incoming.toPrint();
 

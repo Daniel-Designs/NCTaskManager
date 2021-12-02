@@ -28,7 +28,10 @@ public class Task {
      * @param time must be a int
      */
 
-    public Task(String title, int time) {
+    public Task(String title, int time) throws IllegalArgumentException{
+        if(time<0)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
+
         this.title = title;
         this.time = time;
         this.repeat = false;
@@ -45,7 +48,10 @@ public class Task {
      * @param end must be an int
      * @param interval must be an int
      */
-    public Task(String title, int start, int end, int interval) {
+    public Task(String title, int start, int end, int interval) throws IllegalArgumentException {
+        if(start < 0 || end < 0 || interval<0)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
+
         this.title = title;
         this.time = 0;
         this.repeat = true;
@@ -79,7 +85,9 @@ public class Task {
      * in case of a repetitive task, changes the task to non-repetitive.
      * @param time must be an int
      */
-    public void setTime(int time) {
+    public void setTime(int time) throws IllegalArgumentException {
+        if(time<0)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
         if (isRepeat()) {
             this.time = time;
             this.repeat = true;
@@ -95,7 +103,11 @@ public class Task {
      * @param end must be an int
      * @param interval must be an int
      */
-    public void setTime(int start, int end, int interval) {
+    public void setTime(int start, int end, int interval) throws IllegalArgumentException {
+
+        if(start < 0 || end < 0 || interval < 0 || start > end)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative and star parameter shoul be less than end parameter");
+
         if (isRepeat()) {
             this.start = start;
             this.end = end;
@@ -119,7 +131,11 @@ public class Task {
      * Setter for start parameter
      * @param start must be an int
      */
-    public void setStart(int start) {this.start = start;}
+    public void setStart(int start) throws IllegalArgumentException {
+       if(start < 0)
+           throw new IllegalArgumentException("Parameter for calculation should not be negative");
+        this.start = start;
+    }
 
     /**
      * function that returns the end parameter
@@ -131,7 +147,11 @@ public class Task {
      * setter for end parameter
      * @param end must be an int
      */
-    public void setEnd(int end) {this.end = end;}
+    public void setEnd(int end) throws IllegalArgumentException {
+        if(end < 0)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
+        this.end = end;
+    }
 
     /**
      * Getter for the interval parameter
@@ -143,7 +163,10 @@ public class Task {
      * Setter for interval parameter
      * @param interval must be an int
      */
-    public void setInterval(int interval) {
+    public void setInterval(int interval) throws IllegalArgumentException {
+        if(interval < 0)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
+
         this.interval = interval;
     }
 
@@ -187,7 +210,10 @@ public class Task {
      * If after the specified time the task is not executed
      * anymore, the method returns -1.
      */
-    public int nextTimeAfter(int current) {
+    public int nextTimeAfter(int current) throws IllegalArgumentException {
+        if(current < 0)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
+
         int nexTime = 0;
 
         if (isActive()){

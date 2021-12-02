@@ -54,7 +54,9 @@ public class ArrayTaskList {
      * Using the function System.arraycopy()
      * @param task must be a Task Object
      */
-    public void add (Task task){
+    public void add (Task task) throws IllegalArgumentException{
+        if (task == null)
+            throw new IllegalArgumentException("Parameter shoul not be null ");
         Task[] listOfTasksNew = new Task[getListOfTasks().length+1];
         listOfTasksNew[getListOfTasks().length] = task;
         System.arraycopy(getListOfTasks(),0,listOfTasksNew,0,getListOfTasks().length);
@@ -68,7 +70,9 @@ public class ArrayTaskList {
      * @param task must be an Task object
      * @return boolean
      */
-    public boolean remove (Task task){
+    public boolean remove (Task task)throws IllegalArgumentException{
+        if(task == null)
+            throw new IllegalArgumentException("Parameter shuold not be null");
         Task[] listOfTasksNew;
         boolean removed = false;
        for (int i = 0; i<getListOfTasks().length;i++){
@@ -101,7 +105,9 @@ public class ArrayTaskList {
      * @param index
      * @return Task Object
      */
-    public Task getTask(int index){
+    public Task getTask(int index) throws IndexOutOfBoundsException{
+        if(index >= size())
+            throw new IndexOutOfBoundsException(Integer.toString(index)+":  exced the bounds");
         return getListOfTasks()[index];
     }
 
@@ -113,7 +119,9 @@ public class ArrayTaskList {
      * @param to must be an int
      * @return ArrayTaskList Object
      */
-    public ArrayTaskList arrayTaskList (int from,int to){
+    public ArrayTaskList incoming (int from,int to) throws IllegalArgumentException{
+        if(from < 0 || to < 0 || from > to)
+            throw new IllegalArgumentException("Parameter for calculation should not be negative");
 
         ArrayTaskList tasksIncoming = new ArrayTaskList();
         for (int i = 0; i<size();i++){
