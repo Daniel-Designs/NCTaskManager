@@ -90,6 +90,7 @@ public class TestPractice2 {
         arrayOfTask.add(task1);
         arrayOfTask.add(task2);
         arrayOfTask.add(task3);
+        arrayOfTask.add(task3);
         arrayOfTask.add(task4);
 
         System.out.println(arrayOfTask.getListOfTasks().length);

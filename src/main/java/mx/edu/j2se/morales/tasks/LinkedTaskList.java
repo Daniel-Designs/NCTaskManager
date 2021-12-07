@@ -18,6 +18,9 @@ public class LinkedTaskList {
 
     Node head;
 
+    public LinkedTaskList() {
+        this.head = null;
+    }
 
     public LinkedTaskList(Node head) {
         this.head = head;
@@ -52,24 +55,23 @@ public class LinkedTaskList {
     public boolean remove (Task task)throws IllegalArgumentException {
         if (task == null)
             throw new IllegalArgumentException("Parameter shuold not be null");
+
         boolean flag = false;
-        Node aux = getHead();
-        if(getHead() != null){
-           if(aux.taskInNode.equals(task)){
-               setHead(aux.next);
-               flag = true;
-           }
+        Node current = getHead();
+        Node prev = getHead();
 
-           Node auxNext = aux.next;
-
-            while (auxNext != null){
-                if(auxNext.taskInNode.equals(task)){
-                    aux.next = auxNext.next;
+            while (current != null){
+                if(current.taskInNode.equals(task)){
+                    if(current.taskInNode.equals(getHead().taskInNode)){
+                        setHead(getHead().next);
+                    } else{
+                      prev.next = current.next;
+                    }
                     flag = true;
                 }
-                aux = aux.next;
+                prev = current;
+                current = prev.next;
             }
-        }
         return flag;
     }
 
@@ -105,7 +107,7 @@ public class LinkedTaskList {
 
     public void toPrint(){
         Node aux = getHead();
-        while (aux.next != null){
+        while (aux != null){
             System.out.println(aux.taskInNode.getTitle());
             aux = aux.next;
         }
