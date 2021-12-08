@@ -1,6 +1,6 @@
 package mx.edu.j2se.morales.tasks;
 
-public class LinkedTaskList {
+public class LinkedTaskList extends AbstractTaskList{
     public class Node{
         Task taskInNode;
         Node next;
@@ -19,10 +19,12 @@ public class LinkedTaskList {
     Node head;
 
     public LinkedTaskList() {
+        super();
         this.head = null;
     }
 
     public LinkedTaskList(Node head) {
+        super();
         this.head = head;
     }
 
@@ -51,6 +53,7 @@ public class LinkedTaskList {
         }
         //System.out.println("added at the end");
     }
+
 
     public boolean remove (Task task)throws IllegalArgumentException {
         if (task == null)
@@ -91,16 +94,19 @@ public class LinkedTaskList {
         return count;
     }
 
-   public Task getTask(int index) throws IndexOutOfBoundsException{
+   public Task getTask(int index) throws Exception{
         if(index >= size())
             throw new IndexOutOfBoundsException(Integer.toString(index)+":  exced the bounds");
 
-       Node aux = getHead();
+        Node aux = getHead();
 
        if(getHead() != null){
+
           for(int i=0;i<index;i++){
               aux = aux.next;
           }
+       }else{
+           throw new Exception ("The task is null");
        }
        return aux.taskInNode;
     }
@@ -112,6 +118,7 @@ public class LinkedTaskList {
             aux = aux.next;
         }
         }
+
     public LinkedTaskList incoming (int from,int to){
 
         if(from < 0 || to < 0 || from > to)

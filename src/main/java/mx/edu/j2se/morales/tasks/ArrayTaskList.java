@@ -7,19 +7,21 @@ package mx.edu.j2se.morales.tasks;
  * @version 17.11.2021
  */
 
-public class ArrayTaskList {
+public class ArrayTaskList extends AbstractTaskList {
     private Task[] listOfTasks;
 
     /**
      * Empty constructor
      */
     public ArrayTaskList() {
+        super();
         this.listOfTasks = new Task[0];
     }
     /**
      * Constructor not Empty
      */
     public ArrayTaskList(Task[] listOfTasks) {
+        super();
         this.listOfTasks = listOfTasks;
     }
 
@@ -43,6 +45,7 @@ public class ArrayTaskList {
     /**
      * Function that print on console all objects titles from the array
      */
+
     public void toPrint(){
         for (int i = 0; i<getListOfTasks().length;i++){
             System.out.println(getListOfTasks()[i].getTitle());
@@ -54,6 +57,7 @@ public class ArrayTaskList {
      * Using the function System.arraycopy()
      * @param task must be a Task Object
      */
+
     public void add (Task task) throws IllegalArgumentException{
         if (task == null)
             throw new IllegalArgumentException("Parameter shoul not be null ");
@@ -96,6 +100,7 @@ public class ArrayTaskList {
      * Function that returns the size of the array
      * @return int
      */
+
     public int size (){
       return getListOfTasks().length;
     }
@@ -105,6 +110,7 @@ public class ArrayTaskList {
      * @param index
      * @return Task Object
      */
+
     public Task getTask(int index) throws IndexOutOfBoundsException{
         if(index >= size())
             throw new IndexOutOfBoundsException(Integer.toString(index)+":  exced the bounds");
